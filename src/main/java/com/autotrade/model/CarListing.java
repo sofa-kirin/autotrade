@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "car_listings")
@@ -47,12 +49,11 @@ public class CarListing {
     @Builder.Default
     private ListingStatus status = ListingStatus.ACTIVE;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "seller_id", nullable = false)
-    private User seller;
-
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
+
+    @OneToMany(mappedBy = "listing", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CarImage> images = new ArrayList<>();
 
     @PrePersist
     protected void onCreate() {
