@@ -21,7 +21,7 @@ public class Inquiry {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private User user; // nullable — гость тоже может отправить заявку
+    private User user;
 
     @Column(nullable = false)
     private String name;
