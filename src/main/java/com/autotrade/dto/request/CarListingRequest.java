@@ -47,4 +47,5 @@ public class CarListingRequest {
     private Integer horsepower;
     private String driveType;
     private String description;
+
 }

@@ -55,6 +55,9 @@ public class CarListing {
     @OneToMany(mappedBy = "listing", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CarImage> images = new ArrayList<>();
 
+    @OneToOne(mappedBy = "listing", cascade = CascadeType.ALL, orphanRemoval = true)
+    private CarSpecificationDetails specification;
+
     @PrePersist
     protected void onCreate() {
         createdAt = LocalDateTime.now();
