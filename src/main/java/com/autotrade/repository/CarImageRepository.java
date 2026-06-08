@@ -9,9 +9,6 @@ import java.util.Optional;
 
 @Repository
 public interface CarImageRepository extends JpaRepository<CarImage, Long> {
-    // Finds all images that belong to a specific car listing
     List<CarImage> findByListingId(Long listingId);
-
-    // Finds all images that belong to a specific car listing
     Optional<CarImage> findByListingIdAndMainTrue(Long listingId);
 }
